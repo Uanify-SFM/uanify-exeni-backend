@@ -1,11 +1,3 @@
-helloExeni:
-  handler: src/handlers/auth-handler.helloWorld
-  events:
-    - http:
-        path: hello-word-exeni
-        method: get
-#        cors: ${self:custom.corsConfig}
-
 imageDataAnalysis:
   handler: src/handlers/openIA-handler.handlerImageDataAnalysisOpenIA
   events:
