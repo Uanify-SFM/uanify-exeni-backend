@@ -36,7 +36,42 @@ functions:
   hello: aws-node-http-api-project-dev-hello (1.9 kB)
 ```
 
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
+# Folder Structure
+
+The project follows the following folder structure:
+
+```
+├── serverless-files/
+│   ├── serverless-functions-definitions-http.yml
+│   └──  serverless-functions-definitions-triggers.yml
+├── src/
+│   ├── common/
+│   │   ├── api-interfaces/
+│   │   │   ├── type-files/
+│   │   │   └── IRequest.d.ts
+│   │   ├── interfaces/
+│   │   │   ├── IControllerResponse.d.ts
+│   │   │   └── IUser.ts
+│   │   ├── entities/
+│   │   │   └── CognitoJwtData.ts
+│   │   └── enums/
+│   │       └── enums.ts
+│   ├── data/
+│   │   └── user-data.ts    
+│   ├── controllers/
+│   │   └── user-controller.ts
+│   ├── handlers/
+│   │   ├── user-handler.ts
+│   ├── helpers/
+│   │   ├── middy.ts
+|   │   └── ProjectSetup.ts
+|   ├── scripts/
+|   │    └── writeFileTypes.ts
+|   └── validations/
+|   |   └── user-validation.ts
+|   └── types/
+|       └── environment.d.ts 
+```
 
 ### Invocation
 
@@ -46,16 +81,6 @@ After successful deployment, you can call the created application via HTTP:
 curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
 ```
 
-Which should result in response similar to the following (removed `input` content for brevity):
-
-```json
-{
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```
 
 ### Local development
 
