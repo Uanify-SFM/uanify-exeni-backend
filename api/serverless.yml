@@ -1,0 +1,54 @@
+service: aws-lamda-exeni-arena
+frameworkVersion: '3'
+configValidationMode: warn
+
+package:
+  individually: false
+
+custom:
+ defaultStage: dev
+ environment: ${file(env.${self:provider.stage}.yml), file(env.yml):dev}
+ corsConfig:
+    origin: '*'
+    headers:
+      - Content-Type
+      - X-Amz-Date
+      - Authorization
+      - X-Api-Key
+      - X-Amz-Security-Token
+      - X-Amz-User-Agent
+      - Access-Control-Allow-Headers
+      - Access-Control-Allow-Origin
+ # Add webpack as a custom configuration 
+ webpack:
+  webpackConfig: ./webpack.config.js
+  includeModules: true
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  stage: ${opt:stage, self:custom.defaultStage}
+  versionFunctions: false
+  timeout: 30
+  memorySize: 512
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    REGION: ${file(env.dev.yml):REGION}
+    OPENAI_API_KEY: ${file(env.dev.yml):OPENAI_API_KEY}
+    S3_WEBSITE_BUCKET: ${file(env.dev.yml):S3_WEBSITE_BUCKET}
+    ACCOUNT_SID_TWILIO: ${file(env.dev.yml):ACCOUNT_SID_TWILIO}
+    AUTH_TOKEN_TWILIO: ${file(env.dev.yml):AUTH_TOKEN_TWILIO}
+    TWILIO_PHONE_NUMBER: ${file(env.dev.yml):TWILIO_PHONE_NUMBER}
+
+
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+
+functions:
+  - ${file(serverless-files/serverless-functions-definitions-http.yml)}
+
+

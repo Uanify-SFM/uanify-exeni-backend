@@ -1,0 +1,16 @@
+{
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
+      "import/resolver": {
+        "typescript": {
+          "project": ["./api/tsconfig.json"]
+        },
+        "node": {
+          "project": ["./api/tsconfig.json"]
+        }
+      }
+    }
+}
+  

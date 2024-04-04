@@ -1,0 +1,27 @@
+
+# Package directories and files
+node_modules
+jspm_packages
+yarn.lock
+
+# Serverless directories
+.serverless
+.webpack
+dist
+
+# Enviroment
+env.test.yml
+env.back.yml
+
+# Editor directorires
+.DS_Store
+.nyc_output
+yarn-error.log
+.vscode
+
+# Swagger auto generated files 
+type-files/
+coverage/
+
+# IntelliJ files
+.idea/*

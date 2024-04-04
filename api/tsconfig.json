@@ -1,0 +1,47 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "types": [
+        "jest",
+        "node",
+        "reflect-metadata"
+      ],
+      "baseUrl": ".",
+      "paths": {
+        "@api-interfaces/*": [
+          "src/common/api-interfaces/*"
+        ],
+        "@entities/*": [
+          "src/common/entities/*"
+        ],
+        "@enums/*": [
+          "src/common/enums/*"
+        ],
+        "@interfaces/*": [
+          "src/common/interfaces/*"
+        ],
+        "@controllers/*": [
+          "src/controllers/*"
+        ],
+        "@data/*": [
+          "src/data/*"
+        ],
+        "@handlers/*": [
+          "src/handlers/*"
+        ],
+        "@helpers/*": [
+          "src/helpers/*"
+        ],
+        "@validations/*": [
+          "src/validations/*"
+        ]
+      },
+      "rootDir": "./",
+    },
+    "include": [
+      "src",
+      "test"
+    ]
+}

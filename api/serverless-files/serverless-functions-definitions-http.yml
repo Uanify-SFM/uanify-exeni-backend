@@ -1,0 +1,39 @@
+helloExeni:
+  handler: src/handlers/auth-handler.helloWorld
+  events:
+    - http:
+        path: hello-word-exeni
+        method: get
+#        cors: ${self:custom.corsConfig}
+
+imageDataAnalysis:
+  handler: src/handlers/openIA-handler.handlerImageDataAnalysisOpenIA
+  events:
+    - http:
+        path: analyze-image
+        method: post
+        cors: ${self:custom.corsConfig}
+
+textDataAnalysis:
+  handler: src/handlers/openIA-handler.handlerTextDataAnalysisOpenIA
+  events:
+    - http:
+        path: analyze-text
+        method: post
+        cors: ${self:custom.corsConfig}
+
+sendSimpleSMSWhastapp:
+  handler: src/handlers/twilio-handler.handlerSendSimpleSMSWhastapp
+  events:
+    - http:
+        path: send-simple-sms-whatsapp
+        method: post
+        cors: ${self:custom.corsConfig}
+
+sendMediaSMSWhastapp:
+  handler: src/handlers/twilio-handler.handlerSendMediaSMSWhastapp
+  events:
+    - http:
+        path: send-media-sms-whatsapp
+        method: post
+        cors: ${self:custom.corsConfig}
